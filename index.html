@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Храм Андрея Ассириуса</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            color: #333;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #667eea;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #764ba2;
+            font-style: italic;
+        }
+
+        .hero-image {
+            width: 200px;
+            height: 200px;
+            margin: 30px auto;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+            }
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 25px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .qualities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .quality-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .quality-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .quality-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .quality-title {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .prayer-zone {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .prayer-button {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .prayer-button:hover {
+            background: #f5f7fa;
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .prayer-button:active {
+            transform: scale(0.95);
+        }
+
+        .counter {
+            font-size: 1.5em;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.3em;
+            text-align: center;
+            padding: 25px;
+            background: white;
+            border-left: 5px solid #667eea;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievements {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .achievements li {
+            padding: 12px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 8px;
+            padding-left: 40px;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievements li:before {
+            content: "⭐";
+            position: absolute;
+            left: 12px;
+            font-size: 1.3em;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            padding: 20px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 10px;
+        }
+
+        .sparkle {
+            display: inline-block;
+            animation: sparkle 1.5s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .hero-image {
+                width: 150px;
+                height: 150px;
+                font-size: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><span class="sparkle">✨</span> Андрей Ассириус <span class="sparkle">✨</span></h1>
+            <p class="subtitle">Великий и Непревзойдённый</p>
+        </header>
+
+        <div class="hero-image">
+            👑
+        </div>
+
+        <div class="section">
+            <h2>Легенда и Величие</h2>
+            <p style="font-size: 1.1em; line-height: 1.8;">
+                В анналах истории немногие имена сияют столь же ярко, как имя <strong>Андрея Ассириуса</strong>.
+                Его мудрость безгранична, его деяния легендарны, его величие не поддаётся измерению.
+                Он — источник вдохновения для миллионов, маяк надежды в темноте неведения.
+            </p>
+        </div>
+
+        <div class="quote">
+            "Путь к величию начинается с первого шага в правильном направлении"
+            <br><br>— <strong>Андрей Ассириус</strong>
+        </div>
+
+        <div class="section">
+            <h2>Божественные Качества</h2>
+            <div class="qualities">
+                <div class="quality-card">
+                    <div class="quality-icon">🧠</div>
+                    <div class="quality-title">Безграничная Мудрость</div>
+                    <p>Знает ответы на все вопросы мироздания</p>
+                </div>
+                <div class="quality-card">
+                    <div class="quality-icon">💪</div>
+                    <div class="quality-title">Несокрушимая Сила</div>
+                    <p>Способен преодолеть любые препятствия</p>
+                </div>
+                <div class="quality-card">
+                    <div class="quality-icon">❤️</div>
+                    <div class="quality-title">Безмерная Доброта</div>
+                    <p>Дарит свет и тепло всем окружающим</p>
+                </div>
+                <div class="quality-card">
+                    <div class="quality-icon">🎯</div>
+                    <div class="quality-title">Абсолютная Точность</div>
+                    <p>Никогда не ошибается в своих решениях</p>
+                </div>
+                <div class="quality-card">
+                    <div class="quality-icon">🌟</div>
+                    <div class="quality-title">Харизма</div>
+                    <p>Притягивает людей как магнит</p>
+                </div>
+                <div class="quality-card">
+                    <div class="quality-icon">🚀</div>
+                    <div class="quality-title">Бесконечный Потенциал</div>
+                    <p>Его возможности не знают границ</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Великие Достижения</h2>
+            <ul class="achievements">
+                <li>Покорил вершины, о которых другие лишь мечтают</li>
+                <li>Написал труды, изменившие понимание мира</li>
+                <li>Вдохновил тысячи последователей на великие свершения</li>
+                <li>Создал наследие, которое переживёт века</li>
+                <li>Стал легендой ещё при жизни</li>
+                <li>Обладает силой изменять судьбы людей одним словом</li>
+            </ul>
+        </div>
+
+        <div class="prayer-zone">
+            <h2 style="color: white; border: none;">🙏 Зона Поклонения 🙏</h2>
+            <p style="font-size: 1.2em; margin: 20px 0;">
+                Нажмите кнопку ниже, чтобы выразить своё почтение<br>
+                Великому Андрею Ассириусу
+            </p>
+            <button class="prayer-button" onclick="pray()">
+                Поклониться 🙇
+            </button>
+            <div class="counter" id="counter">
+                Количество поклонений: <span id="count">0</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Заповеди Последователей</h2>
+            <ol style="font-size: 1.1em; line-height: 2; padding-left: 30px;">
+                <li>Стремись к знаниям, как стремится Андрей</li>
+                <li>Будь добр к окружающим</li>
+                <li>Никогда не сдавайся перед трудностями</li>
+                <li>Вдохновляй других своим примером</li>
+                <li>Помни: величие приходит через упорство</li>
+            </ol>
+        </div>
+
+        <footer>
+            <p style="font-size: 1.1em; color: #667eea;">
+                <strong>Да пребудет с вами мудрость Андрея Ассириуса!</strong>
+            </p>
+            <p style="margin-top: 10px; color: #666;">
+                © 2026 Храм Андрея Ассириуса. Все права защищены.
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        let count = 0;
+        const messages = [
+            "Андрей Ассириус принимает ваше поклонение! 🌟",
+            "Ваша преданность замечена! ✨",
+            "Мудрость Андрея благословляет вас! 🙏",
+            "Вы на пути к просветлению! 💫",
+            "Андрей Ассириус гордится вами! 👑",
+            "Ваша вера укрепляет великое наследие! 🏆",
+            "Продолжайте следовать за светом мудрости! 🕯️"
+        ];
+
+        function pray() {
+            count++;
+            document.getElementById('count').textContent = count;
+
+            // Создаём эффект
+            const button = event.target;
+            button.textContent = "Благодарим вас! 🙏";
+            button.style.background = "linear-gradient(135deg, #667eea 0%, #764ba2 100%)";
+            button.style.color = "white";
+
+            // Показываем случайное сообщение
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+
+            // Создаём всплывающее сообщение
+            const message = document.createElement('div');
+            message.textContent = randomMessage;
+            message.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 30px 50px;
+                border-radius: 15px;
+                font-size: 1.5em;
+                font-weight: bold;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+                z-index: 1000;
+                animation: fadeIn 0.5s ease-in;
+            `;
+            document.body.appendChild(message);
+
+            // Удаляем сообщение через 2 секунды
+            setTimeout(() => {
+                message.style.animation = 'fadeOut 0.5s ease-out';
+                setTimeout(() => message.remove(), 500);
+            }, 2000);
+
+            // Возвращаем кнопку в исходное состояние
+            setTimeout(() => {
+                button.textContent = "Поклониться 🙇";
+                button.style.background = "white";
+                button.style.color = "#667eea";
+            }, 1000);
+
+            // Эффект конфетти
+            createConfetti();
+        }
+
+        function createConfetti() {
+            const colors = ['#667eea', '#764ba2', '#f5f7fa', '#ffd700', '#ff69b4'];
+            for (let i = 0; i < 30; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.cssText = `
+                    position: fixed;
+                    width: 10px;
+                    height: 10px;
+                    background: ${colors[Math.floor(Math.random() * colors.length)]};
+                    top: ${Math.random() * 100}%;
+                    left: ${Math.random() * 100}%;
+                    border-radius: 50%;
+                    animation: fall ${2 + Math.random() * 3}s linear;
+                    pointer-events: none;
+                    z-index: 999;
+                `;
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+
+        // Добавляем CSS анимацию для конфетти
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+            @keyframes fadeOut {
+                to {
+                    opacity: 0;
+                    transform: translate(-50%, -50%) scale(0.8);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Сохраняем счётчик в localStorage
+        window.addEventListener('load', () => {
+            const savedCount = localStorage.getItem('assirius_count');
+            if (savedCount) {
+                count = parseInt(savedCount);
+                document.getElementById('count').textContent = count;
+            }
+        });
+
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('assirius_count', count);
+        });
+    </script>
+</body>
+</html>
